@@ -13,6 +13,20 @@
         android:theme="@style/Theme.SoftwarePatternsCA"
         tools:targetApi="31">
         <activity
+            android:name=".UserProfile"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CustomerHomepage"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Homepage"
             android:exported="false">
             <meta-data
