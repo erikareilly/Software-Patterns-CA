@@ -117,10 +117,10 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        if(admin == false) {
+        /*if(admin == false) {
             Toast.makeText(RegisterUser.this, "Welcome Customer", Toast.LENGTH_LONG).show();
             return;
-        }
+        }*/
 
         mAuth.createUserWithEmailAndPassword(em,pa)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
