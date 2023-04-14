@@ -25,6 +25,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
     private String userID;
     private Button button;
     TextView displayUserType;
+    boolean admin1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
                     displayTextEmail.setText(email);
                     if (admin) {
                         displayUserType.setText("Admin");
+                        admin1=true;
                     } else {
                         displayUserType.setText("Customer");
                     }
@@ -76,7 +78,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                if(displayUserType.equals("Admin")){
+                if(admin1){
                     Intent intent = new Intent(UserProfile.this, Homepage.class);
                     startActivity(intent);
                 }else{

@@ -3,17 +3,53 @@ package com.example.softwarepatternsca;
 public class Product {
 
     public String title, manufacturer, category;
-    public double price;
+    public String price,image,date,time,pid;
 
     public Product(){
 
     }
 
-    public Product(String title, String manufacturer,String category, double price){
+    public Product(String title, String manufacturer,String category, String price,String image,String date,String time,String pid){
         this.title=title;
         this.manufacturer=manufacturer;
         this.category=category;
         this.price=price;
+        this.image=image;
+        this.date=date;
+        this.time=time;
+        this.pid=pid;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getTitle() {
@@ -31,7 +67,6 @@ public class Product {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
-
     public String getCategory() {
         return category;
     }
@@ -40,11 +75,11 @@ public class Product {
         this.category = category;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 }

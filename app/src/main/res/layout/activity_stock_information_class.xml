@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StockInformationClass">
+
+    <TextView
+        android:id="@+id/newProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="27dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="26dp"
+        android:textAlignment="center"
+        android:text="Add New Product"
+        android:textStyle="bold"/>
+    
+    <LinearLayout
+        android:id="@+id/productLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@id/newProduct"
+        android:layout_marginTop="45dp">
+        
+        <ImageView
+            android:id="@+id/laptop"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:src="@drawable/laptop"/>
+        <ImageView
+            android:id="@+id/alexa"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/alexa"/>
+        <ImageView
+            android:id="@+id/ipad"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ipad"/>
+        <ImageView
+            android:id="@+id/phone"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/phone"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/product2Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@id/productLayout"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/monitor"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/monitor"/>
+        <ImageView
+            android:id="@+id/airpods"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/airpods"/>
+        <ImageView
+            android:id="@+id/headphones"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/headphones"/>
+        <ImageView
+            android:id="@+id/tv"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/tv"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

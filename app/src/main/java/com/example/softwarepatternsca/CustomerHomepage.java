@@ -2,14 +2,19 @@ package com.example.softwarepatternsca;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.example.softwarepatternsca.databinding.StockPopupBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CustomerHomepage extends AppCompatActivity {
+    CardView cardView;
+    CardView cardView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,26 @@ public class CustomerHomepage extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+        cardView = (CardView) findViewById(R.id.cardView);
+        cardView2 = (CardView) findViewById(R.id.cardView2);
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerHomepage.this, StockClass.class);
+                startActivity(intent);
+            }
+        });
+
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerHomepage.this, OrderInfo.class);
+                startActivity(intent);
+
             }
         });
     }
