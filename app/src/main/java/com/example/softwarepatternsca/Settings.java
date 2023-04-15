@@ -44,7 +44,7 @@ public class Settings extends AppCompatActivity {
         viewAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Settings.this, SaveAddress.class);
+                Intent intent = new Intent(Settings.this, ViewCustomerInfo.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +52,7 @@ public class Settings extends AppCompatActivity {
         viewPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Settings.this, SavePayment.class);
+                Intent intent = new Intent(Settings.this, ViewCustomerInfo.class);
                 startActivity(intent);
             }
         });
