@@ -21,26 +21,31 @@ import com.example.softwarepatternsca.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
 
-public class StockClass extends AppCompatActivity implements View.OnClickListener {
-
-    private DatabaseReference ProductReference;
-    private RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
+public class StockClass extends AppCompatActivity {
+     DatabaseReference pReference;
+    RecyclerView recyclerView;
+    MyAdapter adapter;
+    ArrayList<Product> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_class);
 
-        ProductReference = FirebaseDatabase.getInstance().getReference().child("Products");
+
         BottomNavigationView bottomNav = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         bottomNav.setSelectedItemId(R.id.home);
         bottomNav.setSelectedItemId(R.id.person);
@@ -67,42 +72,32 @@ public class StockClass extends AppCompatActivity implements View.OnClickListene
         });
 
         recyclerView = findViewById(R.id.recyclerView);
+        pReference = FirebaseDatabase.getInstance().getReference("Products");
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseRecyclerOptions<Product> options=new FirebaseRecyclerOptions
-                .Builder<Product>()
-                .setQuery(ProductReference, Product.class).build();
-        FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model) {
-                holder.txtProductName.setText(model.getTitle());
-                holder.txtProductPrice.setText("Price:  " + "€"+ model.getPrice());
-                holder.txtProductManufacturer.setText(model.getManufacturer());
-                Picasso.get().load(model.getImage()).into(holder.imageView);
-
-            }
-
-            @NonNull
-            @Override
-            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_layout,parent,false);
-                ProductViewHolder holder = new ProductViewHolder(view);
-                return holder;
-            }
-        };
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        list = new ArrayList<>();
+        adapter = new MyAdapter(this,list);
         recyclerView.setAdapter(adapter);
-        adapter.startListening();
+
+        pReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    Product product = dataSnapshot.getValue(Product.class);
+                    list.add(product);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
+
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -113,8 +108,6 @@ public class StockClass extends AppCompatActivity implements View.OnClickListene
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public void onClick(View v) {
 
-    }
+
 }
