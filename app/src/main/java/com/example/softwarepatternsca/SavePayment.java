@@ -67,9 +67,12 @@ public class SavePayment extends AppCompatActivity {
 
     private void savePayment() {
         String name = nameText.getText().toString().trim();
-        int number = Integer.parseInt(numberText.getText().toString().trim());
-        int cvv = Integer.parseInt(cvvText.getText().toString().trim());
-        int expiry = Integer.parseInt(expiryText.getText().toString().trim());
+        String nu = numberText.getText().toString().trim();
+        long number = Long.parseLong(nu);
+        String cv = cvvText.getText().toString().trim();
+        int cvv =Integer.parseInt(cv);
+        String ex = expiryText.getText().toString().trim();
+        int expiry = Integer.parseInt(ex);
 
        if(numberText.length() !=16){
            numberText.setError("Card Number must be 16 digits");

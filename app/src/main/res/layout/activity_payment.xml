@@ -42,14 +42,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="313dp"
-        android:layout_marginEnd="243dp"
-        android:layout_marginBottom="317dp"
-        android:ems="10"
         android:layout_centerHorizontal="true"
-        android:inputType="number"
-        android:hint="CVV" />
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="462dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="168dp"
+        android:ems="10"
+        android:hint="CVV"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/date"
@@ -59,14 +59,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="243dp"
-        android:layout_marginTop="307dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="314dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="459dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="162dp"
         android:ems="10"
-        android:inputType="number"
-        android:hint="Expiry" />
+        android:hint="Expiry"
+        android:inputType="number" />
 
     <Button
         android:id="@+id/save"
@@ -77,9 +77,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="159dp"
-        android:layout_marginTop="404dp"
+        android:layout_marginTop="563dp"
         android:layout_marginEnd="158dp"
-        android:layout_marginBottom="202dp"
+        android:layout_marginBottom="43dp"
         android:backgroundTint="#000080"
         android:text="SAVE" />
 
@@ -108,13 +108,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="227dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginBottom="387dp"
-        android:ems="10"
         android:layout_centerHorizontal="true"
-        android:inputType="number"
-        android:hint="Card Number" />
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="318dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="296dp"
+        android:ems="10"
+        android:hint="Card Number"
+        android:inputType="number" />
 
 </RelativeLayout>

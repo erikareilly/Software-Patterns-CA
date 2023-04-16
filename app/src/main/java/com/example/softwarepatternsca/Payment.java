@@ -3,13 +3,14 @@ package com.example.softwarepatternsca;
 public class Payment {
 
     String name;
-    int number, cvv, expiry;
+    int cvv, expiry;
+    long number;
 
     public Payment(){
 
     }
 
-    public Payment(String name, int number, int cvv, int expiry){
+    public Payment(String name, long number, int cvv, int expiry){
         this.name=name;
         this.number=number;
         this.cvv=cvv;
@@ -24,11 +25,11 @@ public class Payment {
         this.name = name;
     }
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(long number) {
         this.number = number;
     }
 

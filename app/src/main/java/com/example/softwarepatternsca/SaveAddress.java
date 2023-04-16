@@ -34,6 +34,7 @@ public class SaveAddress extends AppCompatActivity implements View.OnClickListen
         countryText = (EditText) findViewById(R.id.country);
         eircodeText = (EditText) findViewById(R.id.eircode);
         save = (Button) findViewById(R.id.save);
+        save.setOnClickListener(this);
 
         BottomNavigationView bottomNav = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         bottomNav.setSelectedItemId(R.id.home);
