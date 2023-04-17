@@ -38,8 +38,8 @@ public class ShoppingCart extends AppCompatActivity implements ItemClickListener
     MyCartAdapter cartAdapter;
     ArrayList<Cart> list;
     private Button nextB;
-    private TextView tPrice;
-    String totalAmount =null;
+    private TextView tPrice, txtMsg1;
+    String totalAmount ="";
 
 
 
@@ -60,6 +60,7 @@ public class ShoppingCart extends AppCompatActivity implements ItemClickListener
         });
 
         tPrice = (TextView)findViewById(R.id.totalPrice);
+        txtMsg1 = (TextView)findViewById(R.id.msg1);
         // tPrice.setText(cartAdapter.totalPrice);
        // tPrice.setText(totalAmount);
         recyclerView = findViewById(R.id.cartList);
@@ -97,5 +98,8 @@ public class ShoppingCart extends AppCompatActivity implements ItemClickListener
 
 
     }
+
+
+
 
 }
