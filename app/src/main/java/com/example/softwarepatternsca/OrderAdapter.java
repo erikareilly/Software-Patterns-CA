@@ -1,9 +1,11 @@
 package com.example.softwarepatternsca;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,7 +43,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         holder.priceTxt.setText("Total Price: "+ order.getTotalAmount());
         holder.eirTxt.setText("Eircode: "+ order.getEircode());
 
-
+        holder.products.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AdminOrder.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -52,10 +60,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     public static class OrderViewHolder extends RecyclerView.ViewHolder {
         TextView userTxt, priceTxt, eirTxt;
+        Button products;
 
             public OrderViewHolder(@NonNull View itemView, ItemClickListener itemClickListener) {
                 super(itemView);
-
+                products = (Button) itemView.findViewById(R.id.showProducts);
                 userTxt = itemView.findViewById(R.id.username);
                 priceTxt = itemView.findViewById(R.id.order_totalPrice);
                 eirTxt = itemView.findViewById(R.id.order_address);

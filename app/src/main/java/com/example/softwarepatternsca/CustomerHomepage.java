@@ -35,7 +35,7 @@ public class CustomerHomepage extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), UserProfile.class));
                         return true;
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Homepage.class));
+                        startActivity(new Intent(getApplicationContext(), CustomerHomepage.class));
 
                         return true;
                     case R.id.settings:
