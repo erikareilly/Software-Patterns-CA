@@ -40,6 +40,8 @@ public class StockClass extends AppCompatActivity implements ItemClickListener {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     Button addCart, cancelButton;
+    String refinedData;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class StockClass extends AppCompatActivity implements ItemClickListener {
         setContentView(R.layout.activity_stock_class);
 
 
+//        searchView=(SearchView)findViewById(R.id.searchView);
         BottomNavigationView bottomNav = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         bottomNav.setSelectedItemId(R.id.home);
         bottomNav.setSelectedItemId(R.id.person);
@@ -105,6 +108,8 @@ public class StockClass extends AppCompatActivity implements ItemClickListener {
             }
         });
 
+
+
     }
 
 
@@ -115,7 +120,27 @@ public class StockClass extends AppCompatActivity implements ItemClickListener {
         MenuItem menuItem = menu.findItem(R.id.searchView);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Search...");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                txtSearch(query);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                txtSearch(newText);
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void txtSearch(String str){
+        FirebaseDatabase.getInstance().getReference("Products").orderByChild("name").startAt(str).endAt(str+"-");
+        adapter = new MyAdapter(this,list,this);
+        recyclerView.setAdapter(adapter);
     }
 
 

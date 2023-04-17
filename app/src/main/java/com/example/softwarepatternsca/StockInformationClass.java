@@ -94,7 +94,27 @@ public class StockInformationClass extends AppCompatActivity implements ItemClic
         MenuItem menuItem = menu.findItem(R.id.searchView);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Search...");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                txtSearch(query);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                txtSearch(newText);
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void txtSearch(String str){
+        FirebaseDatabase.getInstance().getReference("Products").orderByChild("name").startAt(str).endAt(str+"-");
+        adapter = new MyAdapter(this,list,this);
+        recyclerView.setAdapter(adapter);
     }
 
 

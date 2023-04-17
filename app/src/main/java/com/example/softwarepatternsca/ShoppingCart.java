@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class ShoppingCart extends AppCompatActivity implements ItemClickListener
     private RecyclerView recyclerView;
     MyCartAdapter cartAdapter;
     ArrayList<Cart> list;
+
     private Button nextB;
     private TextView tPrice, txtMsg1;
     String totalAmount ="";
@@ -47,7 +49,6 @@ public class ShoppingCart extends AppCompatActivity implements ItemClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
-
 
         nextB = (Button)findViewById(R.id.nextButton);
         nextB.setOnClickListener(new View.OnClickListener() {
