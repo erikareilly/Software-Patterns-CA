@@ -20,6 +20,7 @@ import android.widget.SearchView;
 
 import com.example.softwarepatternsca.Interface.ItemClickListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +36,7 @@ public class StockClass extends AppCompatActivity implements ItemClickListener {
     RecyclerView recyclerView;
     MyAdapter adapter;
     ArrayList<Product> list;
+    FloatingActionButton fab;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     Button addCart, cancelButton;
@@ -70,6 +72,14 @@ public class StockClass extends AppCompatActivity implements ItemClickListener {
             }
         });
 
+        fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StockClass.this, ShoppingCart.class);
+                startActivity(intent);
+            }
+        });
         recyclerView = findViewById(R.id.recyclerView);
         pReference = FirebaseDatabase.getInstance().getReference("Products");
         recyclerView.setHasFixedSize(true);

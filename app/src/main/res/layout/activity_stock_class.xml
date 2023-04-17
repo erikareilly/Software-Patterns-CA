@@ -27,7 +27,16 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/white"
+            android:layout_marginBottom="70dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_shopping_basket" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
