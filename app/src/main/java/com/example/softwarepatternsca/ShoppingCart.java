@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,8 @@ public class ShoppingCart extends AppCompatActivity implements ItemClickListener
     ArrayList<Cart> list;
     private Button nextB;
     private TextView tPrice;
+    String totalAmount =null;
+
 
 
     @Override
@@ -45,6 +48,20 @@ public class ShoppingCart extends AppCompatActivity implements ItemClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
+
+        nextB = (Button)findViewById(R.id.nextButton);
+        nextB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShoppingCart.this, ConfirmOrder.class);
+                intent.putExtra("Total Price", String.valueOf(cartAdapter.totalPrice));
+                startActivity(intent);
+            }
+        });
+
+        tPrice = (TextView)findViewById(R.id.totalPrice);
+        // tPrice.setText(cartAdapter.totalPrice);
+       // tPrice.setText(totalAmount);
         recyclerView = findViewById(R.id.cartList);
         cReference = FirebaseDatabase.getInstance().getReference("Shopping Cart").child("User Cart").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Products");
         recyclerView.setHasFixedSize(true);

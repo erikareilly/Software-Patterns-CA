@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.CartViewHolder>{
 
+    int totalPrice=0;
     DatabaseReference cReference;
     private final ItemClickListener itemClickListener;
     Context context;
@@ -50,6 +51,8 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.CartViewHo
         holder.txtName.setText(cart.getpName());
         holder.txtPrice.setText("€"+ cart.getpPrice());
 
+        totalPrice = totalPrice+ Integer.parseInt(cart.getpPrice());
+        //holder.txtTotal.setText(String.valueOf(totalPrice));
         cReference = FirebaseDatabase.getInstance().getReference("Shopping Cart").child("User Cart").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Products");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,13 +100,15 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.CartViewHo
 
     public static class CartViewHolder extends RecyclerView.ViewHolder{
 
-        TextView txtName, txtPrice;
+        TextView txtName, txtPrice, txtTotal;
+
 
         public CartViewHolder(@NonNull View itemView, ItemClickListener itemClickListener) {
             super(itemView);
 
             txtName = itemView.findViewById(R.id.cart_prodName);
             txtPrice = itemView.findViewById(R.id.cart_prodPrice);
+            txtTotal = itemView.findViewById(R.id.totalPrice);
         }
     }
 }

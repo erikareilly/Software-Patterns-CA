@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SaveAddress extends AppCompatActivity implements View.OnClickListener{
+public class SaveAddress extends AppCompatActivity{
     
     private EditText houseText, streetText, countyText, countryText, eircodeText;
     private Button save;
@@ -34,7 +34,12 @@ public class SaveAddress extends AppCompatActivity implements View.OnClickListen
         countryText = (EditText) findViewById(R.id.country);
         eircodeText = (EditText) findViewById(R.id.eircode);
         save = (Button) findViewById(R.id.save);
-        save.setOnClickListener(this);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveAddress();
+            }
+        });
 
         BottomNavigationView bottomNav = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         bottomNav.setSelectedItemId(R.id.home);
@@ -62,13 +67,7 @@ public class SaveAddress extends AppCompatActivity implements View.OnClickListen
         });
     }
 
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.save:
-                saveAddress();
-        }
-    }
+
 
     private void saveAddress() {
         String house = houseText.getText().toString().trim();
