@@ -103,7 +103,7 @@ public class ProductDetails extends AppCompatActivity {
                     }
                 });*/
 
-        shopRef.child("User Cart").child("Products").child(productID).updateChildren(cartMap)
+        shopRef.child("User Cart").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Products").child(productID).updateChildren(cartMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -115,7 +115,7 @@ public class ProductDetails extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(ProductDetails.this, "Added to cart",Toast.LENGTH_LONG).show();
-                                                Intent intent = new Intent(ProductDetails.this,StockClass.class);
+                                                Intent intent = new Intent(ProductDetails.this,ShoppingCart.class);
                                                 startActivity(intent);
                                             }
                                         }

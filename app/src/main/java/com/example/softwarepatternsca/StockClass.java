@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class StockClass extends AppCompatActivity implements ItemClickListener {
-     DatabaseReference pReference;
+    DatabaseReference pReference;
     RecyclerView recyclerView;
     MyAdapter adapter;
     ArrayList<Product> list;
