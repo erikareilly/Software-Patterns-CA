@@ -110,15 +110,15 @@ public class ConfirmOrder extends AppCompatActivity {
         final DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("Orders")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         HashMap<String, Object> orderMap = new HashMap<>();
-        orderMap.put("Total Amount",totalAmount);
+        orderMap.put("TotalAmount",totalAmount);
         orderMap.put("name",userName.getText().toString().trim());
-        orderMap.put("House No",houseText.getText().toString().trim());
+        orderMap.put("HouseNo",houseText.getText().toString().trim());
         orderMap.put("Street",streetText.getText().toString().trim());
         orderMap.put("County", countytext.getText().toString().trim());
         orderMap.put("Country",countryText.getText().toString().trim());
         orderMap.put("Eircode", eirText.getText().toString().trim());
-        orderMap.put("Order Date",saveDate);
-        orderMap.put("Order Time",saveTime);
+        orderMap.put("OrderDate",saveDate);
+        orderMap.put("OrderTime",saveTime);
         orderMap.put("state", "Not Shipped");
         orderRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

@@ -77,6 +77,15 @@ public class Homepage extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+        cardView4 = (CardView) findViewById(R.id.cardView4);
+        cardView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Homepage.this, UpdateStock.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
