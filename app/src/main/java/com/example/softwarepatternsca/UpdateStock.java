@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class UpdateStock extends AppCompatActivity {
 
+    //didnt complete on time
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
