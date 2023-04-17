@@ -1,6 +1,7 @@
 package com.example.softwarepatternsca;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,31 +15,29 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SearchView;
 
-import com.example.softwarepatternsca.ViewHolder.ProductViewHolder;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.example.softwarepatternsca.Interface.ItemClickListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
-//import com.squareup.picasso.Picasso;
+
 
 
 import java.util.ArrayList;
 
-public class StockClass extends AppCompatActivity {
+public class StockClass extends AppCompatActivity implements ItemClickListener {
      DatabaseReference pReference;
     RecyclerView recyclerView;
     MyAdapter adapter;
     ArrayList<Product> list;
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
+    Button addCart, cancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +75,9 @@ public class StockClass extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();
-        adapter = new MyAdapter(this,list);
+        adapter = new MyAdapter(this,list,this);
         recyclerView.setAdapter(adapter);
+
 
         pReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -108,6 +108,12 @@ public class StockClass extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    @Override
+    public void onClick(int position) {
+       // Intent intent = new Intent(StockClass.this,ProductDetails.class);
+       // startActivity(intent);
+    }
 
 
 }

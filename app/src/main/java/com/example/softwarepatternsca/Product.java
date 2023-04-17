@@ -2,15 +2,15 @@ package com.example.softwarepatternsca;
 
 public class Product {
 
-    public String title, manufacturer, category;
+    public String name, manufacturer, category;
     public String price,image,date,time,pid;
 
     public Product(){
 
     }
 
-    public Product(String title, String manufacturer,String category, String price,String image,String date,String time,String pid){
-        this.title=title;
+    public Product(String name, String manufacturer,String category, String price,String image,String date,String time,String pid){
+        this.name =name;
         this.manufacturer=manufacturer;
         this.category=category;
         this.price=price;
@@ -52,12 +52,12 @@ public class Product {
         this.time = time;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getManufacturer() {
